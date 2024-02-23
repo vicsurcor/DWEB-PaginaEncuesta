@@ -1,45 +1,30 @@
 <!DOCTYPE html>
-
 <html>
-
-    <head>
-
-        <script>
-
-            function getVoto(int) {
-
-                xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-
-                    if (this.readyState == 4 && this.status == 200) {
-
-                        document.getElementById("encuesta").innerHTML = this.responseText;
-
-                    }
-
+<!--Funcion para recoger los valores de los votos-->
+<head>
+    <script>
+        function getVoto(value) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("encuesta").innerHTML = this.responseText;
                 }
-                xmlhttp.open("GET", "encuesta_voto.php?voto=" + int, true);
-                xmlhttp.send();
-
-            }
-
-        </script>
-
-
-    </head>
-
+            };
+            xmlhttp.open("GET", "encuesta_voto.php?voto=" + value, true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<!--Formulario de alumnos a escoger-->
+<body>
     <div id="encuesta">
-
-        <h3>&iquest;Qu&eacute; persona crees que va a ser escogido</h3>
-
+        <h3>¿Que persona crees que va a ser escogida?</h3>
         <form>
-
-            Aritz A: 
-            <input type="radio" name="voto" value="0" onclick="getVoto(this.value)">
-            <br>
-
+            Aritz A: <input type="radio" name="voto" value="0" onclick="getVoto(this.value)"><br>
+            Aritz P: <input type="radio" name="voto" value="1" onclick="getVoto(this.value)"><br>
+            Randy W: <input type="radio" name="voto" value="2" onclick="getVoto(this.value)"><br>
+            Adrian V: <input type="radio" name="voto" value="3" onclick="getVoto(this.value)"><br>
         </form>
-
     </div>
-
+</body>
 </html>
